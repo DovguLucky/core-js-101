@@ -374,10 +374,10 @@ function getDigitalRoot(num) {
   // throw new Error('Not implemented');
   let numb = 0;
   function inOneNumb(n) {
-    numb = String(n).split('').reduce((acc, el) => {
-      // eslint-disable-next-line no-param-reassign
-      acc += +el;
-      return acc;
+    let ac = 0;
+    numb = String(n).split('').reduce((_, el) => {
+      ac += +el;
+      return ac;
     }, 0);
     if (String(numb).split('').length !== 1) inOneNumb(numb);
     return numb;
@@ -591,19 +591,16 @@ function evaluateTicTacToePosition(position) {
   }
 
   function diagonal(elq) {
-    let res = 'loser';
+    // let res = 'loser';
     if (elq[1][1] != null) {
       if (elq[0][0] === elq[1][1] && elq[2][2] === elq[1][1]) {
-        // eslint-disable-next-line no-return-assign, prefer-destructuring
-        return res = elq[1][1];
+        return elq[1][1];
       }
       if (elq[0][2] === elq[1][1] && elq[2][0] === elq[1][1]) {
-        // eslint-disable-next-line prefer-destructuring
-        res = elq[1][1];
-        return res;
+        return elq[1][1];
       }
     }
-    return res;
+    return 'loser';
   }
   position.forEach((el, indx) => {
     el.forEach((e, ind) => {
