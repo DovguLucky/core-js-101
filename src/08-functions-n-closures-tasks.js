@@ -44,10 +44,13 @@ function getComposition(/* f, g */) {
  *   power05(16) => 4
  *
  */
-function getPowerFunction(/* exponent */) {
-  throw new Error('Not implemented');
+function getPowerFunction(exponent) {
+  // throw new Error('Not implemented');
+  const base = exponent;
+  return function (numb) {
+    return numb ** base;
+  };
 }
-
 
 /**
  * Returns the polynom function of one argument based on specified coefficients.
@@ -62,8 +65,17 @@ function getPowerFunction(/* exponent */) {
  *   getPolynom(8)     => y = 8
  *   getPolynom()      => null
  */
-function getPolynom() {
-  throw new Error('Not implemented');
+function getPolynom(a = 0, b = 0, c = 0) {
+  // throw new Error('Not implemented');
+  let argArr = [a, b, c];
+  argArr = argArr.filter((el) => el !== 0);
+  while (argArr.length < 3) {
+    argArr.unshift(0);
+  }
+  return function (x) {
+    const y = (argArr[0] * (x ** 2)) + (argArr[1] * x) + (argArr[2]);
+    return y;
+  };
 }
 
 
@@ -81,8 +93,17 @@ function getPolynom() {
  *   ...
  *   memoizer() => the same random number  (next run, returns the previous cached result)
  */
-function memoize(/* func */) {
-  throw new Error('Not implemented');
+function memoize(func) {
+  // throw new Error('Not implemented');
+  const cache = new Map();
+  return function (data) {
+    if (cache.has(data)) {
+      return cache.get(data);
+    }
+    const res = func.call(null, data);
+    cache.set(data, res);
+    return res;
+  };
 }
 
 
@@ -103,6 +124,14 @@ function memoize(/* func */) {
  */
 function retry(/* func, attempts */) {
   throw new Error('Not implemented');
+//   let at = attempts;
+//   at += 1;
+//   console.log(at);
+//   return function () {
+//     // eslint-disable-next-line no-unused-vars
+//     func.call(null);
+//     return at;
+//   };
 }
 
 
@@ -131,8 +160,10 @@ function retry(/* func, attempts */) {
  */
 function logger(/* func, logFunc */) {
   throw new Error('Not implemented');
+  // console.log(func);
+  // console.log(logFunc);
 }
-
+// npm test
 
 /**
  * Return the function with partial applied arguments
