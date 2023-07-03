@@ -47,7 +47,7 @@ function getComposition(/* f, g */) {
 function getPowerFunction(exponent) {
   // throw new Error('Not implemented');
   const base = exponent;
-  return function (numb) {
+  return function q(numb) {
     return numb ** base;
   };
 }
@@ -72,7 +72,7 @@ function getPolynom(a = 0, b = 0, c = 0) {
   while (argArr.length < 3) {
     argArr.unshift(0);
   }
-  return function (x) {
+  return function qw(x) {
     const y = (argArr[0] * (x ** 2)) + (argArr[1] * x) + (argArr[2]);
     return y;
   };
@@ -96,7 +96,7 @@ function getPolynom(a = 0, b = 0, c = 0) {
 function memoize(func) {
   // throw new Error('Not implemented');
   const cache = new Map();
-  return function (data) {
+  return function qwe(data) {
     if (cache.has(data)) {
       return cache.get(data);
     }

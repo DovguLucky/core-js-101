@@ -374,11 +374,11 @@ function getDigitalRoot(num) {
   // throw new Error('Not implemented');
   let numb = 0;
   function inOneNumb(n) {
-    let ac = 0;
-    numb = String(n).split('').reduce((_, el) => {
-      ac += +el;
-      return ac;
-    }, 0);
+    numb = 0;
+    String(n).split('').forEach((el) => {
+      numb += +el;
+      return numb;
+    });
     if (String(numb).split('').length !== 1) inOneNumb(numb);
     return numb;
   }
